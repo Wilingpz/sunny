@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdio.h >
 #include <stdlib.h>
-int main1()
+int main()
 {
 	int n = 9876;
 	int i;

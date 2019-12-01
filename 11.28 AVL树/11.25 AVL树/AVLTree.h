@@ -6,15 +6,15 @@
 namespace wf{
 
 	template <class T>
-	class TreeNode
+	class TreeNode//结点类
 	{
-		int m_bf;
-		T m_data;
-		TreeNode<T> * m_left;
+		int m_bf;//平衡因子
+		T m_data;//结点值
+		TreeNode<T> * m_left;//结点的左右孩子指针以及双亲结点指针
 		TreeNode<T> * m_right;
 		TreeNode<T> * m_parent;
 	public:
-		TreeNode(const T & val = T()) :
+		TreeNode(const T & val = T()) ://构造函数
 			m_bf(0),
 			m_data(val),
 			m_left(nullptr),
@@ -23,31 +23,31 @@ namespace wf{
 		{}
 
 		template <class T>
-		friend class AVLTree;
+		friend class AVLTree;//AVL树
 	};
 
 	template <class T>
 	class AVLTree
 	{
-		TreeNode<T> * m_root;
+		TreeNode<T> * m_root;//根节点
 
-		void destroy(TreeNode<T> * root)
+		void destroy(TreeNode<T> * root)//为了调用析构函数的时候用
 		{
 			if (root)
 			{
 				destroy(root->m_left);
-				destroy(root->m_right);
+				destroy(root->m_right);//后序递归删除
 				delete root;
 			}
 		}
 
-		void lRound(TreeNode<T> * pre)
+		void lRound(TreeNode<T> * pre)//左单旋
 		{
-			TreeNode<T> * parent = pre->m_parent; //B结点
-			TreeNode<T> * cur = pre->m_right;
+			TreeNode<T> * parent = pre->m_parent; //将pre的双亲结点给parent
+			TreeNode<T> * cur = pre->m_right;//将pre的右孩子赋给cur
 
-			cur->m_parent = parent;
-			if (parent)
+			cur->m_parent = parent;//将pre的爸爸换给cur，即cur取代pre的位置
+			if (parent)//当pre的爸爸存在时，让爸爸认儿子cur
 			{
 				if (parent->m_left == pre)
 				{
@@ -58,26 +58,26 @@ namespace wf{
 					parent->m_right = cur;
 				}
 			}
-			else
+			else//pre的爸爸不存在则pre为根节点，直接换根
 			{
 				m_root = cur;
 			}
 
-			pre->m_right = cur->m_left;
+			pre->m_right = cur->m_left;//pre认孩子
 			if (cur->m_left)
 			{
-				cur->m_left->m_parent = pre;
+				cur->m_left->m_parent = pre;//cur的右孩子认爸爸
 			}
 
-			cur->m_left = pre;
-			pre->m_parent = cur;
+			cur->m_left = pre;//pre变成cur的左孩子
+			pre->m_parent = cur;//cur变成pre的爸爸
 
-			cur->m_bf = pre->m_bf = 0;
+			cur->m_bf = pre->m_bf = 0;//调整平衡因子
 		}
 
-		void rRound(TreeNode<T> * pre)
+		void rRound(TreeNode<T> * pre)//右单旋
 		{
-			TreeNode<T> * parent = pre->m_parent; //B结点
+			TreeNode<T> * parent = pre->m_parent; //同左单旋
 			TreeNode<T> * cur = pre->m_left;
 
 			cur->m_parent = parent;
@@ -109,67 +109,67 @@ namespace wf{
 			cur->m_bf = pre->m_bf = 0;
 		}
 
-		void rlRound(TreeNode<T> * pre)
+		void rlRound(TreeNode<T> * pre)//右左双旋
 		{
-			TreeNode<T> * right = pre->m_right;
-			TreeNode<T> * newroot = right->m_left;
+			TreeNode<T> * right = pre->m_right;//把pre的右孩子赋给right
+			TreeNode<T> * newroot = right->m_left;//把pre右孩子的左孩子赋给newroot
 
-			int flag = newroot->m_bf;
+			int flag = newroot->m_bf;//记录newroot的平衡因子
 
-			rRound(pre->m_right);
-			lRound(pre);
+			rRound(pre->m_right);//先给pre的右孩子右单旋
+			lRound(pre);//再让pre左单旋
 
-			if (flag == -1)
+			if (flag == -1)//修改平衡因子
 			{
 				right->m_bf = 1;
 			}
-			else
+			else if (flag == 1)
 			{
 				pre->m_bf = -1;
 			}
 		}
 
-		void lrRound(TreeNode<T> * pre)
+		void lrRound(TreeNode<T> * pre)//左右双旋
 		{
 			TreeNode<T> * left = pre->m_left;
 			TreeNode<T> * newroot = left->m_right;
 
-			int flag = newroot->m_bf;
+			int flag = newroot->m_bf;//记录平衡因子
 
-			lRound(pre->m_left);
-			rRound(pre);
+			lRound(pre->m_left);//left先左单旋
+			rRound(pre);//pre再右单旋
 
-			if (flag == -1)
+			if (flag == -1)//修改平衡因子
 			{
 				pre->m_bf = 1;
 			}
-			else
+			else if (flag == 1)
 			{
 				left->m_bf = -1;
 			}
 		}
 	public:
-		AVLTree() :
+		AVLTree() ://构造函数
 			m_root(nullptr)
 		{}
 
-		~AVLTree()
+		~AVLTree()//析构函数
 		{
 			destroy(m_root);
 		}
 
-		bool insert(const T &val)
+		bool insert(const T &val)//插入
 		{
-			if (m_root == nullptr)
+			if (m_root == nullptr)//没有根结点直接插入为根节点
 			{
 				m_root = new TreeNode<T>(val);
 				return true;
 			}
 
-			TreeNode<T> * cur = m_root;
-			TreeNode<T> * pre = nullptr;
+			TreeNode<T> * cur = m_root;//把root赋给cur
+			TreeNode<T> * pre = nullptr;//pre赋空
 
-			while (cur)
+			while (cur)//根据value的值查找要插入的位置
 			{
 				if (val < cur->m_data)
 				{
@@ -186,9 +186,10 @@ namespace wf{
 					return false;
 				}
 			}
-
+			//找到要插入的地方后，找一个结点把val存起来
 			cur = new TreeNode<T>(val);
-			if (val < pre->m_data)
+			//儿子认爸爸
+			if (val < pre->m_data)//确定插入的是左子树还是右子树
 			{
 				pre->m_left = cur;
 			}
@@ -197,9 +198,9 @@ namespace wf{
 				pre->m_right = cur;
 			}
 
-			cur->m_parent = pre;
+			cur->m_parent = pre;//爸爸认儿子
 
-			while (pre)
+			while (pre)//调整pre的平衡因子，左孩子pre-1，右孩子pre加一
 			{
 				if (pre->m_left == cur)
 				{
@@ -210,33 +211,33 @@ namespace wf{
 					pre->m_bf++;
 				}
 
-				if (pre->m_bf == 0)
+				if (pre->m_bf == 0)//不调整
 				{
 					break;
 				}
-				else if (pre->m_bf == 1 || pre->m_bf == -1)
+				else if (pre->m_bf == 1 || pre->m_bf == -1)//向上调整它双亲的平衡因子
 				{
 					cur = pre;
 					pre = pre->m_parent;
 				}
-				else
+				else//四种情况画图理解
 				{
-					if (pre->m_bf == 2)
+					if (pre->m_bf == 2)//平衡因子为2
 					{
 						if (cur->m_bf == 1)
 						{
-							lRound(pre);
+							lRound(pre);//左旋
 						}
 						else
 						{
-							rlRound(pre);
+							rlRound(pre);//先左旋再右旋
 						}
 					}
 					else
 					{
 						if (cur->m_bf == 1)
 						{
-
+							lrRound(pre);
 						}
 						else
 						{
@@ -249,7 +250,7 @@ namespace wf{
 			return true;
 		}
 
-		bool erase(const T &val)
+		bool erase(const T &val)//删除
 		{
 			if (m_root == nullptr)
 			{

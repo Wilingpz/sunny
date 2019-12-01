@@ -123,7 +123,7 @@ namespace wf{
 				return false;
 			}
 
-			if (cur->m_left && cur->m_right)//当这个数的左右子树都不为空时
+#if 0		if (cur->m_left && cur->m_right)//当这个数的左右子树都不为空时
 			{
 				//把cur赋给pre2；把cur的左子树赋给cur
 				TreeNode<T> * cur2 = cur->m_left;
@@ -155,6 +155,19 @@ namespace wf{
 				}
 				delete cur;//删除cur
 			}
+#else
+			TreeNode<T> * cur2 = cur->m_left;
+			TreeNode<T> * pre2 = cur;
+
+			if (cur2->m_right)
+			{
+				for (; cur2->m_right; pre2 = cur2, cur2 = cur2->m_right);//找到最后一个右子树
+				pre2->m_right = cur2->m_left;
+			}
+			cur->m_data = cur2->m_data;
+
+			delete cur2;
+#endif
 			else if (cur->m_left)//如果只有左子树存在
 			{
 				if (cur == pre)

@@ -1,4 +1,4 @@
-#include<iostream>
+#include<iostream>//求数根（即所有位数相加之和，若不为一位数则继续相加）
 #include<string>
 
 using namespace std;
@@ -15,7 +15,7 @@ int main()
 			sum += num % 10;//个位的数字
 			num = num / 10;//个位以上的数字
 		}
-		while (sum > 9)
+		while (sum > 9)//所有数位和
 		{
 			res = sum % 10;
 			sum = sum / 10;
@@ -51,7 +51,7 @@ int numRoot(int num)
 {        
 		int sum = 0;        
 		//先将每一位进行相加得到总和，防止数字过大        
-		for (int i = 0; i < origin.length(); i++) 
+		for (int i = 0; i < origin.length(); i++) //要用字符串来做
 		{            
 			sum += origin[i] - '0';       
 		}           //对总和求树根       

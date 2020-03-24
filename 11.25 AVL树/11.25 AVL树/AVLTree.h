@@ -3,7 +3,7 @@
 #include <vector>
 #include <stack>
 
-namespace wf{
+namespace pz{
 
 	template <class T>
 	class TreeNode
@@ -43,7 +43,7 @@ namespace wf{
 
 		void lRound(TreeNode<T> * pre)
 		{
-			TreeNode<T> * parent = pre->m_parent; //B���
+			TreeNode<T> * parent = pre->m_parent; //B结点
 			TreeNode<T> * cur = pre->m_right;
 
 			cur->m_parent = parent;
@@ -77,7 +77,7 @@ namespace wf{
 
 		void rRound(TreeNode<T> * pre)
 		{
-			TreeNode<T> * parent = pre->m_parent; //B���
+			TreeNode<T> * parent = pre->m_parent; //B结点
 			TreeNode<T> * cur = pre->m_left;
 
 			cur->m_parent = parent;
@@ -356,21 +356,21 @@ namespace wf{
 		}
 
 		/*
-		���ǲ���������������
-		�������������У�
-		a��������û���Һ���
-		ֱ�������Ӽ̳��Լ����Һ��Ӻ͸���
-		b�����������Һ���
-		һ·���ң��ҵ�����һ���Һ��ӣ�Ȼ��������ӵ�
-		���������������׵��������ϣ�Ȼ�������̳�Ҫɾ����
-		����˼ʹ�ϵ�����������͸��ף�
-		��Ҫɾ���Ľڵ��Ǹ��ڵ�ʱ�����ü̳и��׹�ϵ����Ҫ�޸�
-		���ڵ�ָ��
-		��ֻ��������
-		ֱ�����������̳��Լ��ĸ��׹�ϵ�����Ҫɾ���Ǹ�����ô
-		ֱ�ӻ������ɡ�
-		������
-		ֱ���������������߿գ��̳��Լ��ĸ��׹�ϵ������ͬ��
+		看是不是有左右子树：
+		①左右子树都有：
+		a、左子树没有右孩子
+		直接让左孩子继承自己的右孩子和父亲
+		b、左子树有右孩子
+		一路向右，找到最后的一个右孩子，然后将这个孩子的
+		左子树挂在它父亲的右子树上，然后让它继承要删除节
+		点的人际关系（左右子树和父亲）
+		当要删除的节点是根节点时，不用继承父亲关系，但要修改
+		根节点指向。
+		②只有左子树
+		直接让左子树继承自己的父亲关系，如果要删的是根，那么
+		直接换根即可。
+		③其他
+		直接让右子树（或者空）继承自己的父亲关系，其他同上
 		*/
 
 		std::vector<T> InOrder()

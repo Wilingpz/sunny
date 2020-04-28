@@ -185,15 +185,22 @@ DataType RSA::Getekey(DataType euler)
 DataType RSA:: Getdkey(DataType ekey, DataType euler)
 {
 	//de%f(n)=1 
-	DataType dkey = euler / ekey;//搜索法
-	while (1)
-	{
-		if ((dkey*ekey) % euler == 1)
-		{
-			return dkey;
-		}
-		++dkey;
-	}
+	DataType x = 0, y = 0;
+	exGcd(ekey, euler, x, y);
+	//只在乎x是多少
+	//变换，让解密密钥是一个比较小的整数
+	return (x%euler + euler) % euler;
+
+
+	//DataType dkey = euler / ekey;//搜索法
+	//while (1)
+	//{
+	//	if ((dkey*ekey) % euler == 1)
+	//	{
+	//		return dkey;
+	//	}
+	//	++dkey;
+	//}
 }
 //辗转相除法(欧几里得算法)
 //a%b=c 当c不为0
@@ -208,7 +215,21 @@ DataType RSA::Getgcd(DataType data1, DataType data2)
 	}
 	return data2;
 }
-key RSA::getallkey()
+//key RSA::getallkey()
+//{
+//	return _key;
+//}
+DataType RSA::exGcd(DataType a, DataType b, DataType &x, DataType &y)//传引用(输出型参数或可以做左值)
 {
-	return _key;
+	if (b == 0)
+	{
+		x = 1;
+		y = 0;
+		return a;
+	}
+	DataType gcd=exGcd(b, a%b, x, y);
+	DataType x1 = x, y1 = y;
+	x = y1;
+	y = x1 - a / b*y1;
+	return gcd;//返回最大公约数，x,y传的是引用，所以可以直接得到x，y的值
 }

@@ -50,5 +50,6 @@ private:
 	DataType Getekey(DataType euler);
 	DataType Getdkey(DataType ekey, DataType euler);
 	DataType Getgcd(DataType data1, DataType data2);
-	key getallkey();
+	DataType exGcd(DataType a, DataType b, DataType &x, DataType &y);
+	//key getallkey();
 };

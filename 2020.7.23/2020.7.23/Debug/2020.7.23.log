@@ -1,0 +1,17 @@
+﻿生成启动时间为 2020/7/26 8:21:28。
+     1>项目“D:\c++实验\2020.7.23\2020.7.23\2020.7.23.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp main1.cpp
+         main1.cpp
+         main.cpp
+         正在生成代码...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\c++实验\2020.7.23\Debug\2020.7.23.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\c++实验\2020.7.23\Debug\2020.7.23.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\c++实验\2020.7.23\Debug\2020.7.23.lib" /MACHINE:X86 Debug\main.obj
+         Debug\main1.obj
+     1>main1.obj : error LNK2019: 无法解析的外部符号 "private: __thiscall Single::Single(void)" (??0Single@@AAE@XZ)，该符号在函数 "void __cdecl `dynamic initializer for 'private: static class Single Single::m_instance''(void)" (??__E?m_instance@Single@@0V1@A@@YAXXZ) 中被引用
+     1>D:\c++实验\2020.7.23\Debug\2020.7.23.exe : fatal error LNK1120: 1 个无法解析的外部命令
+     1>已完成生成项目“D:\c++实验\2020.7.23\2020.7.23\2020.7.23.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:08.57

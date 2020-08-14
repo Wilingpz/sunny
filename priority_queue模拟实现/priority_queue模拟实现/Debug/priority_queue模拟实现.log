@@ -1,0 +1,41 @@
+﻿生成启动时间为 2020/8/14 19:41:40。
+     1>项目“D:\c++实验\priority_queue模拟实现\priority_queue模拟实现\priority_queue模拟实现.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
+     1>d:\c++实验\priority_queue模拟实现\priority_queue模拟实现\priority_queue.h(6): error C2065: “vector”: 未声明的标识符
+     1>d:\c++实验\priority_queue模拟实现\priority_queue模拟实现\priority_queue.h(6): error C2275: “T”: 将此类型用作表达式非法
+                 d:\c++实验\priority_queue模拟实现\priority_queue模拟实现\priority_queue.h(88) : 参见“T”的声明
+     1>d:\c++实验\priority_queue模拟实现\priority_queue模拟实现\priority_queue.h(88): error C2974: 'pz::priority_queue' : 模板 对于 'Container'是无效参数，应为类型
+                 d:\c++实验\priority_queue模拟实现\priority_queue模拟实现\priority_queue.h(8) : 参见“pz::priority_queue”的声明
+     1>d:\c++实验\priority_queue模拟实现\priority_queue模拟实现\priority_queue.h(6): error C2065: “less”: 未声明的标识符
+                 d:\c++实验\priority_queue模拟实现\priority_queue模拟实现\priority_queue.h(88) : 参见“T”的声明
+                 d:\c++实验\priority_queue模拟实现\priority_queue模拟实现\priority_queue.h(8) : 参见“pz::priority_queue”的声明
+     1>d:\c++实验\priority_queue模拟实现\priority_queue模拟实现\priority_queue.h(88): error C2974: 'pz::priority_queue' : 模板 对于 'Compare'是无效参数，应为类型
+                 d:\c++实验\priority_queue模拟实现\priority_queue模拟实现\priority_queue.h(8) : 参见“pz::priority_queue”的声明
+     1>d:\c++实验\priority_queue模拟实现\priority_queue模拟实现\priority_queue.h(88): error C2133: “a”: 未知的大小
+     1>d:\c++实验\priority_queue模拟实现\priority_queue模拟实现\priority_queue.h(88): error C2512: “pz::priority_queue”: 没有合适的默认构造函数可用
+     1>d:\c++实验\priority_queue模拟实现\priority_queue模拟实现\priority_queue.h(89): error C2662: “void pz::priority_queue<T,Container,Compare>::push(const T &)”: 不能将“this”指针从“pz::priority_queue”转换为“pz::priority_queue<T,Container,Compare> &”
+                 原因如下:  无法从“pz::priority_queue”转换为“pz::priority_queue<T,Container,Compare>”
+                 转换要求第二个用户定义的转换运算符或构造函数
+     1>d:\c++实验\priority_queue模拟实现\priority_queue模拟实现\priority_queue.h(90): error C2662: “void pz::priority_queue<T,Container,Compare>::push(const T &)”: 不能将“this”指针从“pz::priority_queue”转换为“pz::priority_queue<T,Container,Compare> &”
+                 原因如下:  无法从“pz::priority_queue”转换为“pz::priority_queue<T,Container,Compare>”
+                 转换要求第二个用户定义的转换运算符或构造函数
+     1>d:\c++实验\priority_queue模拟实现\priority_queue模拟实现\priority_queue.h(91): error C2662: “void pz::priority_queue<T,Container,Compare>::push(const T &)”: 不能将“this”指针从“pz::priority_queue”转换为“pz::priority_queue<T,Container,Compare> &”
+                 原因如下:  无法从“pz::priority_queue”转换为“pz::priority_queue<T,Container,Compare>”
+                 转换要求第二个用户定义的转换运算符或构造函数
+     1>d:\c++实验\priority_queue模拟实现\priority_queue模拟实现\priority_queue.h(92): error C2662: “void pz::priority_queue<T,Container,Compare>::push(const T &)”: 不能将“this”指针从“pz::priority_queue”转换为“pz::priority_queue<T,Container,Compare> &”
+                 原因如下:  无法从“pz::priority_queue”转换为“pz::priority_queue<T,Container,Compare>”
+                 转换要求第二个用户定义的转换运算符或构造函数
+     1>d:\c++实验\priority_queue模拟实现\priority_queue模拟实现\priority_queue.h(93): error C2662: “void pz::priority_queue<T,Container,Compare>::push(const T &)”: 不能将“this”指针从“pz::priority_queue”转换为“pz::priority_queue<T,Container,Compare> &”
+                 原因如下:  无法从“pz::priority_queue”转换为“pz::priority_queue<T,Container,Compare>”
+                 转换要求第二个用户定义的转换运算符或构造函数
+     1>d:\c++实验\priority_queue模拟实现\priority_queue模拟实现\priority_queue.h(94): error C2662: “bool pz::priority_queue<T,Container,Compare>::empty(void)”: 不能将“this”指针从“pz::priority_queue”转换为“pz::priority_queue<T,Container,Compare> &”
+                 原因如下:  无法从“pz::priority_queue”转换为“pz::priority_queue<T,Container,Compare>”
+                 转换要求第二个用户定义的转换运算符或构造函数
+     1>d:\c++实验\priority_queue模拟实现\priority_queue模拟实现\priority_queue.h(94): fatal error C1903: 无法从以前的错误中恢复；正在停止编译
+     1>已完成生成项目“D:\c++实验\priority_queue模拟实现\priority_queue模拟实现\priority_queue模拟实现.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:00.66

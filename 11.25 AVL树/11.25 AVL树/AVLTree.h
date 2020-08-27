@@ -3,7 +3,8 @@
 #include <vector>
 #include <stack>
 
-namespace pz{
+namespace pz
+{
 
 	template <class T>
 	class TreeNode
@@ -41,7 +42,7 @@ namespace pz{
 			}
 		}
 
-		void lRound(TreeNode<T> * pre)
+		void lRound(TreeNode<T> * pre)//左右双旋
 		{
 			TreeNode<T> * parent = pre->m_parent; //B结点
 			TreeNode<T> * cur = pre->m_right;
@@ -75,7 +76,7 @@ namespace pz{
 			cur->m_bf = pre->m_bf = 0;
 		}
 
-		void rRound(TreeNode<T> * pre)
+		void rRound(TreeNode<T> * pre)//右旋
 		{
 			TreeNode<T> * parent = pre->m_parent; //B结点
 			TreeNode<T> * cur = pre->m_left;
@@ -109,7 +110,7 @@ namespace pz{
 			cur->m_bf = pre->m_bf = 0;
 		}
 
-		void rlRound(TreeNode<T> * pre)
+		void rlRound(TreeNode<T> * pre)//右左双旋
 		{
 			TreeNode<T> * right = pre->m_right;
 			TreeNode<T> * newroot = right->m_left;
@@ -129,7 +130,7 @@ namespace pz{
 			}
 		}
 
-		void lrRound(TreeNode<T> * pre)
+		void lrRound(TreeNode<T> * pre)//左旋
 		{
 			TreeNode<T> * left = pre->m_left;
 			TreeNode<T> * newroot = left->m_right;
@@ -158,7 +159,7 @@ namespace pz{
 			destroy(m_root);
 		}
 
-		bool insert(const T &val)
+		bool insert(const T &val)//插入
 		{
 			if (m_root == nullptr)
 			{

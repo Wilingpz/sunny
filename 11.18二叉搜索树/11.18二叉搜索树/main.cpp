@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-	wf::BinarySortTree<int> bst;
+	pz::BinarySortTree<int> bst;
 
 	bst.insert(5);
 	bst.insert(2);
@@ -18,12 +18,12 @@ int main()
 	bst.insert(6);
 
 	bst.erase(7);
-	/*vector<int> v = bst.InOrder();
+	vector<int> v = bst.InOrder();
 
 	for (auto & i : v)
 	{
 		cout << i << ' ';
-	}*/
+	}
 	system("pause");
 	return 0;
 }

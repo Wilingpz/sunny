@@ -3,7 +3,8 @@
 #include <vector>
 #include <stack>
 
-namespace wf{
+namespace pz
+{
 
 	template <class T>
 	class TreeNode//结点的类
@@ -131,7 +132,8 @@ namespace wf{
 				//找到cur的左子树的最右子树继承cur的位置
 				if (cur2->m_right)//如果右子树存在
 				{
-					for (; cur2->m_right; pre2 = cur2, cur2 = cur2->m_right);//找到最右的子树来继承cur
+					for (; cur2->m_right; pre2 = cur2, cur2 = cur2->m_right);
+					//找到最右的子树来继承cur
 					pre2->m_right = cur2->m_left;//如果cur2有左子树就把他给cur2父节点的右子树，没有的话就给一个空，不影响
 					cur2->m_left = cur->m_left;//继承cur的左子树
 				}

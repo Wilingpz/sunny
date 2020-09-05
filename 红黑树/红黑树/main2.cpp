@@ -2,7 +2,7 @@
 #include <unordered_map>
 using namespace std;
 
-int main()
+int main1()
 {
 	unordered_map<int, int> um;
 	um.insert(pair<int, int>(2, 5));

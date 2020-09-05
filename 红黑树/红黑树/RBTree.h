@@ -1,17 +1,18 @@
 #pragma once
 
-namespace wf{
+namespace pz
+{
 
-	enum Color { RED, BLACK };
+	enum Color { RED, BLACK };//枚举颜色
 
-	template <class T>
+	template <class T>//结点类型
 	class RBTreeNode
 	{
 		T m_data;
-		RBTreeNode<T> * m_left;
-		RBTreeNode<T> * m_right;
-		RBTreeNode<T> * m_parent;
-		Color m_color;
+		RBTreeNode<T> * m_left;//左孩子
+		RBTreeNode<T> * m_right;//右孩子
+		RBTreeNode<T> * m_parent;//双亲
+		Color m_color;//颜色
 
 	public:
 		RBTreeNode(const T & val = T(), Color color = RED) :
@@ -19,7 +20,7 @@ namespace wf{
 			m_right(nullptr),
 			m_parent(nullptr),
 			m_data(val),
-			m_color(color)
+			m_color(color)//默认给的是红色结点，如果给的是黑色，则每次插入对树的性质都会有所改变
 		{}
 
 		template <class T>
@@ -27,12 +28,12 @@ namespace wf{
 	};
 
 	template <class T>
-	class RBTree
+	class RBTree//红黑树
 	{
-		RBTreeNode<T> * m_head;
-		size_t m_size;
+		RBTreeNode<T> * m_head;//头指针
+		size_t m_size;//大小
 
-		void lRound(RBTreeNode<T> * pre)
+		void lRound(RBTreeNode<T> * pre)//左单旋
 		{
 			RBTreeNode<T> * parent = pre->m_parent;
 			RBTreeNode<T> * cur = pre->m_right;
@@ -65,7 +66,7 @@ namespace wf{
 			pre->m_parent = cur;
 		}
 
-		void rRound(RBTreeNode<T> * pre)
+		void rRound(RBTreeNode<T> * pre)//右单旋
 		{
 			RBTreeNode<T> * parent = pre->m_parent;
 			RBTreeNode<T> * cur = pre->m_left;
@@ -98,7 +99,7 @@ namespace wf{
 			pre->m_parent = cur;
 		}
 
-		void destroy(RBTreeNode<T> * root)
+		void destroy(RBTreeNode<T> * root)//销毁
 		{
 			if (root)
 			{
@@ -108,37 +109,37 @@ namespace wf{
 			}
 		}
 	public:
-		RBTree() :
+		RBTree() ://构造函数
 			m_size(0)
 		{
 			m_head = new RBTreeNode < T >;
 		}
 
-		~RBTree()
+		~RBTree()//析构函数
 		{
 			m_size = 0;
 			destroy(m_head->m_parent);
 			delete m_head;
 		}
 
-		void clear()
+		void clear()//清空
 		{
 			m_size = 0;
 			destroy(m_head->m_parent);
 			m_head->m_parent = m_head->m_left = m_head->m_right = nullptr;
 		}
 
-		size_t size()
+		size_t size()//size()
 		{
 			return m_size;
 		}
 
-		RBTreeNode<T> * & getRoot()
+		RBTreeNode<T> * & getRoot()//返回根节点
 		{
 			return m_head->m_parent;
 		}
 
-		RBTreeNode<T> * leftMost()
+		RBTreeNode<T> * leftMost()//最左值
 		{
 			RBTreeNode<T> * cur = getRoot();
 
@@ -146,12 +147,12 @@ namespace wf{
 			return cur;
 		}
 
-		bool empty()
+		bool empty()//清空
 		{
 			return m_head->m_parent == nullptr;
 		}
 
-		RBTreeNode<T> * rightMost()
+		RBTreeNode<T> * rightMost()//最右值
 		{
 			RBTreeNode<T> * cur = getRoot();
 
@@ -159,7 +160,7 @@ namespace wf{
 			return cur;
 		}
 
-		bool insert(const T & val)
+		bool insert(const T & val)//插入
 		{
 			RBTreeNode<T> * & root = getRoot();
 
@@ -290,7 +291,7 @@ namespace wf{
 			return true;
 		}
 
-		bool erase(const T &val)
+		bool erase(const T &val)//删除
 		{
 			if (m_root == nullptr)
 			{
@@ -307,7 +308,7 @@ namespace wf{
 					pre = cur;
 					cur = cur->m_left;
 				}
-				else if (val > cur->m_data)
+				else if (val -> cur->m_data)
 				{
 					pre = cur;
 					cur = cur->m_right;

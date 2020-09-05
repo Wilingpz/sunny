@@ -2,9 +2,9 @@
 #include <iostream>
 using namespace std;
 
-int main1()
+int main()
 {
-	wf::RBTree<int> rbt;
+	pz::RBTree<int> rbt;
 
 	rbt.insert(6);
 	rbt.insert(2);
@@ -33,5 +33,7 @@ int main1()
 	{
 		cout << i << endl;
 	}
+
+	system("pause");
 	return 0;
 }

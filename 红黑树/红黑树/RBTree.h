@@ -35,11 +35,12 @@ namespace pz
 
 		void lRound(RBTreeNode<T> * pre)//左单旋
 		{
+			//同样是找到
 			RBTreeNode<T> * parent = pre->m_parent;
 			RBTreeNode<T> * cur = pre->m_right;
 
 			cur->m_parent = parent;
-			if (parent != m_head)
+			if (parent != m_head)//不等于头结点
 			{
 				if (parent->m_left == pre)
 				{
@@ -52,6 +53,7 @@ namespace pz
 			}
 			else
 			{
+				//等于头结点
 				m_head->m_parent = cur;
 				cur->m_parent = m_head;
 			}
